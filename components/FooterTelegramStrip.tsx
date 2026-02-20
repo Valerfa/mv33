@@ -5,9 +5,7 @@ export default function FooterTelegramStrip() {
 
   useEffect(() => {
     const canvas = canvasRef.current!;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+const ctx = canvas.getContext("2d")!;
 
     const icon = new Image();
     icon.src = "/icons/telegram-footer.svg";
