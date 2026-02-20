@@ -4,8 +4,7 @@ export default function FooterTelegramStrip() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvas = canvasRef.current!;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
