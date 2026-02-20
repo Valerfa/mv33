@@ -1,0 +1,17 @@
+{
+  "app": {
+    "[project]/Documents/development/mv33/app/page": [
+      "static/media/8e410338cab7e12e-s.p.986de7be.woff2",
+      "static/media/9a800f173b8d9e8f-s.p.ea25be69.woff2",
+      "static/media/62d4b50592542c9f-s.p.9e30d041.woff2",
+      "static/media/ce62453a442c7f35-s.p.124b2306.woff2",
+      "static/media/7cdbb9ca823c0a73-s.p.f2244ea0.woff2",
+      "static/media/cf514f5d0007dafa-s.p.417aa1a2.woff2",
+      "static/media/d3fe2f289711ac3f-s.p.50575af1.woff2",
+      "static/media/a343f882a40d2cc9-s.p.71e1367e.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

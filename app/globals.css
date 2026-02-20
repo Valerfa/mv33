@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-oswald: "Oswald", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+  --color-light: #F0EEED;
+  --color-dark: #1B1D22;
+  --color-accent: #00BE7F;
+  --color-beige: #F0EAE3;
+}
+
+/* Плавный скролл по якорям */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === БАЗА === */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-manrope);
+  font-weight: 400;
+  background: #F0EEED;
+  color: #000000;
+}
+
+/* Чтобы якоря не прятались под хедер */
+section {
+  scroll-margin-top: 100px;
+}
+
+.title-hero {
+  font-family: 'Oswald', sans-serif;
+  line-height: 0.9 !important;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+
+
+/* === ТИПОГРАФИКА === */
+/* Мини-подписи (Caption) */
+.caption {
+  font-size: 0.75rem;    /* text-xs */
+  font-weight: 400;      /* font-normal */
+  line-height: 0.8;      /* leading-tight custom */
+  letter-spacing: 0.01em;
+}
+
+/* Наборный текст (Body Text) */
+.body-text {
+  font-size: 1rem;       /* text-md (16px) */
+  font-weight: 400;      /* font-normal */
+  line-height: 1.4;      /* custom leading */
+  letter-spacing: 0.01em;
+}
+
+/* Наборный текст медиум (Body Medium) */
+.body-medium {
+  font-size: 0.875rem;   /* text-sm (14px) */
+  font-weight: 500;      /* font-medium */
+  line-height: 1.2;      /* custom leading */
+  letter-spacing: 0.01em;
+}
+
+/* Заголовок (Heading) */
+.heading {
+  font-size: 2.25rem;    /* text-4xl (36px) */
+  font-weight: 500;      /* font-bold (предположительно для заголовка) */
+  line-height: 0.8;      /* ultra tight */
+  letter-spacing: -0.02em;
+}
+
+/* Подзаголовок (Subheading) */
+.subheading {
+  font-size: 0.75rem;    /* text-xs */
+  font-weight: 600;      /* font-semibold */
+  line-height: 0.8;      /* ultra tight */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Цифры карточки (Card Numbers) */
+.card-number {
+  font-size: 3rem;       /* text-5xl (48px) - для акцента */
+  font-weight: 600;      /* font-bold */
+  line-height: 1;        /* leading-none */
+  letter-spacing: -0.03em;
+}
+
+/* Альтернативный вариант цифр поменьше */
+.card-number-sm {
+  font-size: 2.25rem;    /* text-4xl (36px) */
+  font-weight: 700;      /* font-bold */
+  line-height: 1;        /* leading-none */
+  letter-spacing: -0.02em;
+}
+
+/* === МЕДИА-ЗАПРОСЫ ДЛЯ ТИПОГРАФИКИ === */
+@media (min-width: 1536px) { /* 2xl breakpoint */
+  .heading {
+    font-size: 3rem;     /* 2xl:text-5xl (48px) */
+  }
+}
+
+/* === МЕДИА-ЗАПРОСЫ ОТ ВАС === */
+@media (max-width: 768px) {
+  section {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  
+  /* Адаптивная типографика для мобильных */
+  .heading {
+    font-size: 1.875rem; /* text-3xl на мобильных */
+  }
+  
+  .body-text {
+    font-size: 0.9375rem; /* Чуть меньше на мобильных */
+  }
+  
+  .card-number {
+    font-size: 2.5rem;    /* Чуть меньше на мобильных */
+  }
+}
+
+/* Скрытие скроллбара */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* === ДОПОЛНИТЕЛЬНЫЕ УТИЛИТНЫЕ КЛАССЫ === */
+@layer utilities {
+  /* Для очень плотного межстрочного интервала */
+  .leading-ultra-tight {
+    line-height: 0.85 !important;
+  }
+  
+  /* Для суперплотного (ещё меньше) */
+  .leading-super-tight {
+    line-height: 0.75 !important;
+  }
+  
+  /* Кастомные размеры шрифта */
+  .text-micro {
+    font-size: 0.625rem; /* 10px */
+    line-height: 0.9;
+  }
+  
+  /* Акцентный текст */
+  .text-accent {
+    color: var(--color-accent);
+  }
+  
+  /* Для чисел в статистике */
+  .stat-number {
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+}
