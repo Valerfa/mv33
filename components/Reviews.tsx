@@ -50,7 +50,7 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section className="w-full bg-light py-12 overflow-hidden">
+    <section className="w-full py-12 overflow-hidden">
       <div className="w-full flex flex-col gap-4 md:flex-row md:gap-0">
         
         {/* ЛЕВАЯ КОЛОНКА */}

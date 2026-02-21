@@ -39,11 +39,11 @@ export default function ImpactPanels() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section className="p-4 md:p-8 lg:p-12 bg-light w-full flex flex-col gap-4">
+    <section className="p-4 md:p-8 lg:p-12 w-full flex flex-col gap-4">
       {/* Левая текстовая колонка */}
       <div className="lg:w-[500px] flex flex-col justify-between">
-        <div className="h-full">
-  <div className="text-black flex items-center mb-4">
+        <div className="h-full mb-4">
+  <div className="text-black flex items-center mb-2 md:mb-4">
         <p className="text-2xl">
         •
       </p>
@@ -51,7 +51,7 @@ export default function ImpactPanels() {
       О нас
       </p>
       </div>
-          <h2 className="text-black heading mb-12">
+          <h2 className="text-black heading">
  Результаты <br/> в цифрах  
           </h2>
           

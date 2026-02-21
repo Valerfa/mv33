@@ -6,7 +6,7 @@ export default function TeamBlock() {
   return (
     <section className="relative w-full p-4 md:p-8 lg:p-12 flex flex-col">
       {/* 1. Заголовок секции */}
-      <div className="flex items-center mb-4">
+      <div className="flex items-center  mb-2 md:mb-4">
         <span className="text-2xl text-black">•</span>
         <p className="text-black text-sm font-medium">Как мы работаем</p>
       </div>
