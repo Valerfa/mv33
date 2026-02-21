@@ -28,9 +28,7 @@ export default function Footer() {
           >
             gramzo33rus@gmail.com
           </a>
-           <Link className="pt-8 text-light/60 hover:text-light transition-colors text-md md:text-xl underline underline-offset-2 cursor-pointer" href="/privacy"> 
-          Политика конфиденциальности
-        </Link>
+          
         </div>
 
         {/* Социальные иконки */}
@@ -79,13 +77,16 @@ export default function Footer() {
           </a>
         </div>
         </div>
-<div className="flex flex-col md:flex-row justify-between items-start mt-24 py-4 px-4 md:px-4 lg:px-12 border-light/40">
+<div className="flex flex-col md:flex-row justify-between items-start mt-24 py-4 px-4 md:px-4 lg:px-12 bg-black">
   <div className="flex flex-row flex-wrap gap-2 text-micro text-light/60">
     <p className="">© 2026 Индивидуальный предприниматель Алексеев Константин Юрьевич</p>
     <p className="hidden md:block"> | </p>
     <p className="">ИНН: 332710259344</p>
      <p className=""> | </p>
     <p className="">ОГРНИП: 325330000063900</p>
+     <Link className="pt-8 text-light/60 hover:text-light transition-colors text-micro underline underline-offset-2 cursor-pointer" href="/privacy"> 
+          Политика конфиденциальности
+        </Link>
 </div>
 
 
