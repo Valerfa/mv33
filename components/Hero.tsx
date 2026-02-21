@@ -58,25 +58,13 @@ export default function Hero() {
               <Image
                 src="/icons/logo.svg"
                 alt="Логотип"
-                width={36}
-                height={36}
+                width={48}
+                height={48}
                 priority
               />
             </a>
 
-            {/* ПРАВАЯ ЧАСТЬ */}
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:+79203669096"
-                className="text-white body-text transition hover:text-accent/80"
-              >
-                +7 (920) 366-90-96
-              </a>
-
-              <button className="hidden h-12 px-4 md:px-6 rounded-xl bg-white/90 backdrop-blur-sm text-black text-sm font-medium hover:bg-white transition">
-                Заказать
-              </button>
-            </div>
+            
           </nav>
         </header>
 
@@ -84,13 +72,13 @@ export default function Hero() {
         <div className="relative z-10 w-full h-[calc(100vh-4rem)] flex flex-col justify-between">
           
           {/* Верхняя часть - заголовки */}
-          <div className="flex-1 flex flex-col justify-end mx-4 md:mx-4 lg:mx-12 pb-4 md:pb-8">
-            <p className="title-hero text-6xl md:text-7xl lg:text-8xl xl:text-[100px] 2xl:text-[140px] 3xl:text-[200px] text-light leading-[0.85]">
+          <div className="flex-1 flex flex-col justify-end mx-4 md:mx-4 lg:mx-12 pb-24 md:pb-36">
+            <h1 className="title-hero text-white">
               Безопасные поездки
-            </p>
-            <p className="title-hero text-6xl md:text-7xl lg:text-8xl xl:text-[100px] 2xl:text-[140px] 3xl:text-[200px] text-accent leading-[0.85]">
-              с трезвым водителем
-            </p>
+              <br />
+              <span className="text-accent">с трезвым водителем</span>
+            </h1>
+            
             
             {/* Бейдж "Работаем 24 часа" - только на десктопе */}
             <div className="mt-4 md:mt-6 lg:mt-8">

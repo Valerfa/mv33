@@ -27,7 +27,7 @@ body {
   margin: 0;
   font-family: var(--font-manrope);
   font-weight: 400;
-  background: #F0EEED;
+  background: #F1F1F1;
   color: #000000;
 }
 
@@ -36,135 +36,147 @@ section {
   scroll-margin-top: 100px;
 }
 
+/* ================= HERO TITLE ================= */
+
 .title-hero {
-  font-family: 'Oswald', sans-serif;
-  line-height: 0.9 !important;
-  font-weight: 400;
-  letter-spacing: -0.04em;
+  font-size: 3.6rem; /* mobile */
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
 }
 
+/* ≥768px (tablet) */
+@media (min-width: 768px) {
+  .title-hero {
+    font-size: 4rem;
+  }
+}
 
+/* ≥1024px (desktop) */
+@media (min-width: 1024px) {
+  .title-hero {
+    font-size: 6rem;
+  }
+}
+
+/* ≥1280px (large desktop) */
+@media (min-width: 1280px) {
+  .title-hero {
+    font-size: 7rem;
+  }
+}
+
+/* ≥1536px (2xl) */
+@media (min-width: 1536px) {
+  .title-hero {
+    font-size: 8rem;
+  }
+}
 
 /* === ТИПОГРАФИКА === */
 /* Мини-подписи (Caption) */
 .caption {
-  font-size: 0.75rem;    /* text-xs */
-  font-weight: 400;      /* font-normal */
-  line-height: 0.8;      /* leading-tight custom */
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 0.8;
   letter-spacing: 0.01em;
 }
 
-/* Наборный текст (Body Text) */
 .body-text {
-  font-size: 1rem;       /* text-md (16px) */
-  font-weight: 400;      /* font-normal */
-  line-height: 1.4;      /* custom leading */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
   letter-spacing: 0.01em;
 }
 
-/* Наборный текст медиум (Body Medium) */
 .body-medium {
-  font-size: 0.875rem;   /* text-sm (14px) */
-  font-weight: 500;      /* font-medium */
-  line-height: 1.2;      /* custom leading */
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
   letter-spacing: 0.01em;
 }
 
-/* Заголовок (Heading) */
 .heading {
-  font-size: 2.25rem;    /* text-4xl (36px) */
-  font-weight: 500;      /* font-bold (предположительно для заголовка) */
-  line-height: 0.8;      /* ultra tight */
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 0.8;
   letter-spacing: -0.02em;
 }
 
-/* Подзаголовок (Subheading) */
 .subheading {
-  font-size: 0.75rem;    /* text-xs */
-  font-weight: 600;      /* font-semibold */
-  line-height: 0.8;      /* ultra tight */
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 0.8;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* Цифры карточки (Card Numbers) */
 .card-number {
-  font-size: 3rem;       /* text-5xl (48px) - для акцента */
-  font-weight: 600;      /* font-bold */
-  line-height: 1;        /* leading-none */
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
-/* Альтернативный вариант цифр поменьше */
 .card-number-sm {
-  font-size: 2.25rem;    /* text-4xl (36px) */
-  font-weight: 700;      /* font-bold */
-  line-height: 1;        /* leading-none */
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.02em;
 }
 
-/* === МЕДИА-ЗАПРОСЫ ДЛЯ ТИПОГРАФИКИ === */
-@media (min-width: 1536px) { /* 2xl breakpoint */
+@media (min-width: 1536px) {
   .heading {
-    font-size: 3rem;     /* 2xl:text-5xl (48px) */
+    font-size: 3rem;
   }
 }
 
-/* === МЕДИА-ЗАПРОСЫ ОТ ВАС === */
 @media (max-width: 768px) {
   section {
     padding-left: 2px;
     padding-right: 2px;
   }
-  
-  /* Адаптивная типографика для мобильных */
+
   .heading {
-    font-size: 1.875rem; /* text-3xl на мобильных */
+    font-size: 1.875rem;
   }
-  
+
   .body-text {
-    font-size: 0.9375rem; /* Чуть меньше на мобильных */
+    font-size: 0.9375rem;
   }
-  
+
   .card-number {
-    font-size: 2.5rem;    /* Чуть меньше на мобильных */
+    font-size: 2.5rem;
   }
 }
 
-/* Скрытие скроллбара */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* === ДОПОЛНИТЕЛЬНЫЕ УТИЛИТНЫЕ КЛАССЫ === */
 @layer utilities {
-  /* Для очень плотного межстрочного интервала */
   .leading-ultra-tight {
     line-height: 0.85 !important;
   }
-  
-  /* Для суперплотного (ещё меньше) */
+
   .leading-super-tight {
     line-height: 0.75 !important;
   }
-  
-  /* Кастомные размеры шрифта */
+
   .text-micro {
-    font-size: 0.625rem; /* 10px */
+    font-size: 0.625rem;
     line-height: 0.9;
   }
-  
-  /* Акцентный текст */
+
   .text-accent {
     color: var(--color-accent);
   }
-  
-  /* Для чисел в статистике */
+
   .stat-number {
     font-size: 3.5rem;
     font-weight: 400;
