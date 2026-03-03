@@ -36,10 +36,10 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative min-h-screen max-h-screen bg-[#131313] w-full rounded-b-xl overflow-hidden">
+      <section className="relative min-h-[100svh] bg-[#131313] w-full rounded-b-xl overflow-hidden">
         {/* Фолбэк на изображение если видео не загрузится */}
         <Image
-          src="/images/vladimir.jpg"
+          src="/images/hero-minimal.png"
           alt=""
           fill
           priority
@@ -48,7 +48,7 @@ export default function Hero() {
         />
 
         {/* Оверлей для читаемости */}
-        <div className="absolute inset-0 bg-black/80" />
+        <div className="absolute inset-0 bg-black/60" />
 
         {/* Хедер ВНУТРИ Hero */}
         <header className="relative z-20 w-full">
@@ -69,7 +69,7 @@ export default function Hero() {
         </header>
 
         {/* Основной контент - используем flex для точного контроля */}
-        <div className="relative z-10 w-full h-[calc(100vh-4rem)] flex flex-col justify-between">
+        <div className="relative z-10 w-full min-h-[calc(100svh-4rem)] flex flex-col justify-between">
           
           {/* Верхняя часть - заголовки */}
           <div className="flex-1 flex flex-col justify-end mx-4 md:mx-4 lg:mx-12 pb-24 md:pb-36">
@@ -89,26 +89,21 @@ export default function Hero() {
           </div>
 
           {/* Нижняя часть - контент */}
-          <div className="border-t-2 border-white/20 w-full">
+          <div className="border-t-2 border-white/10 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 min-h-[30vh]">
               
               {/* Левая колонка */}
-              <div className="h-full md:border-r-2 border-white/20">
-                <div className="h-full mx-4 md:mx-4 lg:mx-12 flex flex-col justify-center">
-                  <p className="caption text-white/30 mb-4 md:mb-6">О сервисе</p>
-                  <p className="text-md md:text-lg xl:text-2xl text-white font-light leading-relaxed">
+              <div className="h-full md:border-r-2 border-white/10">
+                <div className="h-full mx-4 md:mx-4 lg:mx-12 flex flex-col justify-between">
+                  <p className="caption text-white/30 my-4 md:my-6">О сервисе</p>
+                  <p className="text-lg xl:text-2xl mb-4 md:mb-6 text-white font-light leading-relaxed">
                     Мы помогаем быть вовремя в нужном месте. Независимо от
                     обстоятельств. Мы сделаем вашу поездку комфортной и
                     безопасной.
                   </p>
                 </div>
               </div>
-              
-              {/* Правая колонка */}
-              <div className="h-full">
-                <div className="h-full mx-4 md:mx-8 lg:mr-12 xl:mr-16 2xl:mr-24 flex flex-col justify-center py-4 md:py-8">
-                  
-                  {/* Кнопка "Позвонить" для мобильных */}
+              {/* Кнопка "Позвонить" для мобильных */}
                   <div className="md:hidden mb-6">
                     <a
                       href="tel:+79203669096"
@@ -117,11 +112,16 @@ export default function Hero() {
                       Позвонить
                     </a>
                   </div>
+              {/* Правая колонка */}
+         
+                <div className="h-full mx-4 md:mx-8 lg:mr-12 xl:mr-16 2xl:mr-24 p">
+                  
+                  
                   
                   {/* Форма для десктопа */}
-                  <div className="hidden md:block">
-                    <p className="caption text-white/30 mb-4">Заказ услуги</p>
-                    <div className="w-full 2xl:w-3/4 h-16 bg-white rounded-xl py-1 pl-4 md:pl-6 pr-1 flex justify-between">
+                  <div className="h-full hidden md:flex flex-col justify-between">
+                    <div><p className="caption text-white/30 mt-4 md:mt-6">Заказ услуги</p></div>
+                    <div className="mb-4 md:mb-6 w-full 2xl:w-3/4 h-16 bg-white rounded-xl py-1 pl-4 md:pl-6 pr-1 flex justify-between">
                       <input
                         inputMode="tel"
                         value={phone}
@@ -136,7 +136,7 @@ export default function Hero() {
                         Заказать звонок
                       </button>
                     </div>
-                  </div>
+            
                 </div>
               </div>
             </div>
