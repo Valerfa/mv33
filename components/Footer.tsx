@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 
 import Link from "next/link";
-import FooterTelegramStrip from "./FooterTelegramStrip";
 
 export default function Footer() {
   return (
