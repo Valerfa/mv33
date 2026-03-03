@@ -135,7 +135,7 @@ const [submitted, setSubmitted] = useState(false);
 
         {!submitted ? (
   <>
-    <h2 className="title text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-center text-black">
+    <h2 className="heading text-center text-black">
       Укажите номер, <br /> по которому с вами <br /> можно связаться
     </h2>
 
@@ -178,7 +178,7 @@ const [submitted, setSubmitted] = useState(false);
           className="mt-1 h-6 w-6 accent-black"
         />
         <span className="leading-snug">
-          Я даю согласие на обработку персональных данных в соответствии с
+          Я даю согласие на обработку персональных данных в соответствии с 
           <Link
             href="/privacy"
             className="text-accent underline underline-offset-2 hover:text-accent/70"
@@ -208,35 +208,17 @@ const [submitted, setSubmitted] = useState(false);
 ) : (
 
 
-  <div className="py-20 text-center flex flex-col items-center gap-6">
+  <div className="py-8 px-4 text-center flex flex-col items-center gap-2">
   {/* success icon */}
-  <svg
-    className="success-icon"
-    width="48"
-    height="48"
-    viewBox="0 0 72 72"
-    fill="none"
-  >
-    <circle
-      cx="36"
-      cy="36"
-      r="34"
-      fill="#56AE62"
-      strokeWidth="4"
-      className="success-circle"
-    />
-    <path
-      d="M22 38L32 48L50 28"
-      stroke="#F3EDE6"
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="success-check"
-    />
-  </svg>
-
-  <p className="text-xl lg:text-2xl font-medium leading-snug">
-    Данные успешно отправлены!</p>
+  <img
+  src="/icons/check-icon.svg"
+  alt="Успешно"
+  className="w-24 h-24"
+/>
+<p className="heading leading-snug mt-8">
+    Заявка принята</p>
+  <p className="text-lg lg:text-xl font-normal leading-snug mt-2">
+    В ближайшее время мы свяжемся с вами для согласования маршрута</p>
    
 </div>
 )}

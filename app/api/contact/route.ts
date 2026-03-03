@@ -3,78 +3,35 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { type } = body;
+    const { name, phone, comment } = body;
 
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
+    const text = `
+🚗 Новая заявка на услугу "Трезвый водитель"
 
-    if (!token || !chatId) {
-      return NextResponse.json(
-        { error: "Telegram env vars are missing" },
-        { status: 500 }
-      );
-    }
-
-    let message = "";
-
-    // ===== ОБРАТНЫЙ ЗВОНОК (popup) =====
-    if (type === "callback") {
-      message = `
-📞 ОБРАТНЫЙ ЗВОНОК
-
-👤 Имя: ${body.name || "—"}
-📞 Телефон: ${body.phone || "—"}
-💬 Комментарий: ${body.comment || "—"}
+Имя: ${name || "не указано"}
+Телефон: ${phone}
+Комментарий: ${comment || "нет"}
 `;
-    }
 
-    // ===== АНКЕТА =====
-    if (type === "questionnaire") {
-  message = `
-📝 АНКЕТА
-
-💍 Пара: ${body.coupleNames || "—"}
-🎉 Формат: ${body.eventFormat || "—"}
-
-📅 Дата: ${body.eventDate || "—"}
-📍 Место: ${body.eventLocation || "—"}
-👥 Гостей: ${body.guestsCount || "—"}
-
-🎤 Программа:
-${body.showProgram || "—"}
-
-🎶 Артисты:
-${body.artists || "—"}
-
-⛔ Стоп-лист:
-${body.stopList?.trim() || "Не указан"}
-
-📞 Связь (${body.contactMethod}):
-${body.contactDetails || "—"}
-`;
-}
-
-    if (!message) {
-      return NextResponse.json(
-        { error: "Unknown form type" },
-        { status: 400 }
-      );
-    }
-
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-      }),
-    });
-
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to send message" },
-      { status: 500 }
+    const response = await fetch(
+      `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: process.env.TELEGRAM_CHAT_ID,
+          text,
+        }),
+      }
     );
+
+    if (!response.ok) {
+      throw new Error("Telegram error");
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }
