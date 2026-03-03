@@ -1,17 +1,17 @@
-import About from "@/components/About";
 import Hero from "../components/Hero";
-import Gallery from "@/components/Gallery";
+import Media from "../components/Media";
 import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
-import CTA from "@/components/CTA";
-import ImpactPanels from "@/components/ImpactPanels";
+import Advantage from "@/components/Advantage";
+import Price from "@/components/Price";
   
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Gallery/>
-      <ImpactPanels/>
+      <Media/>
+      <Price/>
+      <Advantage/>
       <Reviews/>
       <Footer/>
     </>
