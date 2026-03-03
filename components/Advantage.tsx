@@ -1,10 +1,9 @@
-// components/ImpactPanels.tsx
 "use client";
 
 import Image from "next/image";
 import { useState } from "react";
 
-const PANELS = [
+const CARDS = [
   {
     id: 1,
     title: "5 лет",
@@ -35,11 +34,11 @@ const PANELS = [
   },
 ];
 
-export default function ImpactPanels() {
+export default function Advantage() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section className="p-4 md:p-8 lg:p-12 w-full flex flex-col gap-4">
+    <section className="px-4 md:px-8 lg:px-12 py-8 w-full flex flex-col gap-4">
       {/* Левая текстовая колонка */}
       <div className="lg:w-[500px] flex flex-col justify-between">
         <div className="h-full mb-4">
@@ -63,7 +62,7 @@ export default function ImpactPanels() {
       {/* Панели */}
       {/* Карточки */}
 <div className="flex-1 flex flex-col md:flex-row gap-4">
-  {PANELS.map((panel) => (
+  {CARDS.map((panel) => (
     <div
     key={panel.id} 
       className="

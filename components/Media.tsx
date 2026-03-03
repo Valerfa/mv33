@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 
-export default function TeamBlock() {
+export default function Media() {
   return (
-    <section className="relative w-full p-4 md:p-8 lg:p-12 flex flex-col">
+    <section className="px-4 md:px-8 lg:px-12 pt-16 pb-8 flex flex-col">
       {/* 1. Заголовок секции */}
       <div className="flex items-center  mb-2 md:mb-4">
         <span className="text-2xl text-black">•</span>
@@ -16,45 +16,38 @@ export default function TeamBlock() {
         Предоставляем удобный <br/> и понятный сервис
       </h2>
 
-    
-     {/* 4. Шаги работы */}
-<div className="max-w-4xl mb-4">
-  <div className="flex flex-col md:flex-row items-center md:items-center justify-start md:justify-between gap-2 rounded-xl">
-
-    <div className="body-text text-black text-center md:text-left">
+<div className="block max-w-4xl mb-4 border-l-[2px] border-black">
+  <div className="flex flex-col gap-4">
+<div className="left-0 -ml-[6px] flex items-start gap-2">
+  <div className="h-[10px] w-[10px] rounded-full bg-black"></div>
+    <p className="body-text text-black text-center md:text-left -mt-1">
       Вы звоните нам
+    </p>
     </div>
-
-    <div className="text-black text-xl">
-      <span className="md:hidden">↓</span>
-      <span className="hidden md:inline">→</span>
-    </div>
-
-    <div className="body-text text-black text-center md:text-left">
+    <div className="left-0 -ml-[6px] flex items-center gap-2">
+  <div className="h-[10px] w-[10px] rounded-full bg-black"></div>
+    <p className="body-text text-black text-center md:text-left">
       Согласовываем маршрут
+    </p>
     </div>
-
-    <div className="text-black text-xl">
-      <span className="md:hidden">↓</span>
-      <span className="hidden md:inline">→</span>
-    </div>
-
-    <div className="body-text text-black text-center md:text-left">
+    <div className="left-0 -ml-[6px] flex items-center gap-2">
+  <div className="h-[10px] w-[10px] rounded-full bg-black"></div>
+    <p className="body-text text-black text-center md:text-left">
       Назначаем встречу
+    </p>
     </div>
-
-    <div className="text-black text-xl">
-      <span className="md:hidden">↓</span>
-      <span className="hidden md:inline">→</span>
-    </div>
-
-    <div className="body-text text-black text-center md:text-left">
+    <div className="left-0 -ml-[6px] flex items-end gap-2">
+  <div className="h-[10px] w-[10px] rounded-full bg-black"></div>
+    <p className="body-text text-black text-center md:text-left -mb-1">
       Вы полагаетесь на нас
+    </p>
     </div>
 
   </div>
 </div>
-      {/* 3. Видео */}
+
+
+      {/* Видео */}
       <div className="relative w-full h-64 md:h-96 lg:h-[600px] mb-2">
         <video
           autoPlay
