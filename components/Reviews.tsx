@@ -116,13 +116,13 @@ export default function ReviewsSection() {
           <div className="flex gap-2 md:mt-12">
             <button
               onClick={() => scroll("left")}
-              className="w-16 h-16 md:w-10 md:h-10 rounded-full bg-[#E9E5E5] text-black hover:bg-white/20 transition"
+              className="w-16 h-16 md:w-10 md:h-10 rounded-full bg-smoke text-black hover:bg-white/20 transition"
             >
               ←
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-16 h-16 md:w-10 md:h-10 rounded-full bg-[#E9E5E5] text-black hover:bg-white/20 transition"
+              className="w-16 h-16 md:w-10 md:h-10 rounded-full bg-smoke text-black hover:bg-white/20 transition"
             >
               →
             </button>
@@ -139,7 +139,7 @@ export default function ReviewsSection() {
           {REVIEWS.map((r) => (
             <div
               key={r.id}
-              className="bg-[#E9E5E5] min-w-[360px] max-w-[360px] rounded-2xl p-6 flex flex-col justify-between"
+              className="bg-smoke min-w-[360px] max-w-[360px] rounded-2xl p-6 flex flex-col justify-between"
             >
               {/* рейтинг */}
               <div className="mb-4">

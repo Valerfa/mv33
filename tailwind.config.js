@@ -14,6 +14,8 @@ module.exports = {
         light: "#F0EEED",
         accent: "#00BE7F",
         accent2: "#0183E4",
+        smoke: "#E8E8E8",
+        orange: "#FF8548",
       },
     },
   },

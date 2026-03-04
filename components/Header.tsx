@@ -1,50 +1,79 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Logo from "@/public/icons/logo.svg";
+import OrderPopup from "./OrderPopup";
 
 export default function Header() {
+  const [orderOpen, setOrderOpen] = useState(false);
+
   return (
-    <header className="relative z-50 w-full bg-transparent">
-      <nav className="flex items-center justify-between h-16 px-4">
-        {/* ЛОГО */}
-        <a href="/" className="flex items-center">
-          <Image
-            src={Logo}
-            alt="Логотип"
-            width={36}
-            height={36}
-            priority
-          />
-        </a>
+    <>
+      <header className="absolute top-0 left-0 w-full z-50">
+        <nav className="relative flex items-center h-20 px-4 md:px-8 pt-4">
 
-        {/* ПРАВАЯ ЧАСТЬ */}
-        <div className="flex items-center gap-4">
-          <a
-            href="tel:+79203669096"
-            className="text-white body-text transition hover:text-accent/80"
-          >
-            +7 (920) 366-90-96
-          </a>
+          {/* 📱 MOBILE — логотип слева */}
+          <div className="md:hidden">
+            <a href="/" className="flex items-center">
+              <Image
+                src={Logo}
+                alt="Логотип"
+                width={56}
+                height={56}
+                priority
+              />
+            </a>
+          </div>
 
-          <button
-            className="
-              hidden
-              h-12
-              px-4 md:px-6
-              rounded-xl
-              bg-white/90 backdrop-blur-sm
-              text-black
-              text-sm
-              font-medium
-              hover:bg-white
-              transition
-            "
-          >
-            Заказать
-          </button>
-        </div>
-      </nav>
-    </header>
+          {/* 💻 DESKTOP — текст слева */}
+          <div className="hidden md:block text-white text-sm font-medium uppercase whitespace-nowrap">
+            Мой водитель 33
+          </div>
+
+          {/* 💻 DESKTOP — логотип по центру */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
+            <a href="/" className="flex items-center">
+              <Image
+                src={Logo}
+                alt="Логотип"
+                width={56}
+                height={56}
+                priority
+              />
+            </a>
+          </div>
+
+          {/* 💻 DESKTOP — кнопка справа */}
+          <div className="hidden md:block ml-auto">
+            <button
+              onClick={() => setOrderOpen(true)}
+              className="
+                flex
+                items-center justify-center
+                h-12
+                px-5
+                rounded-xl
+                bg-accent
+                text-black
+                text-sm
+                font-medium
+                hover:bg-black
+                hover:text-white
+                transition
+              "
+            >
+              Вызвать водителя
+            </button>
+          </div>
+
+        </nav>
+      </header>
+
+      <OrderPopup
+        open={orderOpen}
+        onClose={() => setOrderOpen(false)}
+      />
+    </>
   );
 }

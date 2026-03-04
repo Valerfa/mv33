@@ -4,11 +4,13 @@ import Image from "next/image";
 
 export default function Media() {
   return (
-    <section className="px-4 md:px-8 lg:px-12 pt-16 pb-8 flex flex-col">
+    <section className="px-4 md:px-8 lg:px-12 pt-16 pb-8 flex flex-col items-start">
       {/* 1. Заголовок секции */}
-      <div className="flex items-center  mb-2 md:mb-4">
-        <span className="text-2xl text-black">•</span>
-        <p className="text-black text-sm font-medium">Как мы работаем</p>
+      <div className="inline-flex items-center bg-black/5 text-black/30 rounded-md px-2 mb-2 md:mb-4">
+        
+      <p className="text-sm font-medium">
+      Как мы работаем
+      </p>
       </div>
 
       {/* 2. Основной заголовок */}
@@ -48,14 +50,14 @@ export default function Media() {
 
 
       {/* Видео */}
-      <div className="relative w-full h-64 md:h-96 lg:h-[600px] mb-2">
+      <div className="relative w-full h-[500px] lg:h-[600px] mb-2">
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+          className="absolute inset-0 w-full h-full object-cover rounded-2xl"
         >
           <source src="/images/hero-video2.mp4" type="video/mp4" />
         </video>

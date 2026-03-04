@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-black w-full pt-12 pb-4 md:pb-8 lg:pb-12 px-4 md:px-4 lg:px-12">
-      <div className="grid grid-col md:grid-cols-4 gap-4">
-      <div className="flex flex-col items-start text-left">
+    <footer className="bg-black w-full pt-12 pb-4 md:pb-8 lg:pb-12">
+      <div className="flex flex-col md:flex-row gap-4 px-4 md:px-8 lg:px-12">
+      <div className="flex flex-col items-start text-left w-full md:w-1/2 lg:w-3/4">
         {/* Заголовок */}
         <h3 className="heading mb-10 text-light">
           Связаться с нами:
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
 
         {/* Социальные иконки */}
-        <div className="pt-4 flex items-center space-x-6">
+        <div className="py-8 flex items-center space-x-6">
           <a 
             href="https://www.instagram.com/myvoditel33"
             target="_blank"
@@ -77,19 +77,26 @@ export default function Footer() {
           </a>
         </div>
         </div>
-<div className="p-4 bg-[#151719] rounded-2xl w-full md:col-start-4 h-40">
-  <div className="flex flex-col h-full text-light/60">
+<div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-4">
+   <div className="flex flex-col text-light/60 bg-[#151719] p-3 md:p-4 rounded-2xl h-48">
     
     <div>
-      <p className="text-sm text-white font-medium">
+      <p className="text-md text-white/70 font-medium">
         Правовая информация
       </p>
 
       <Link
-        className="mt-2 block text-micro underline underline-offset-2 hover:text-light"
+        className="mt-4 block text-micro underline underline-offset-2 hover:text-light"
         href="/privacy"
       >
         Политика конфиденциальности
+      </Link>
+
+      <Link
+        className="mt-4 block text-micro underline underline-offset-2 hover:text-light"
+        href="/oferta"
+      >
+        Договор оферты
       </Link>
     </div>
 
@@ -103,6 +110,32 @@ export default function Footer() {
     </div>
 
   </div>
+  <div className="bg-[#151719] p-3 md:p-4 rounded-xl flex-none">
+  <a
+    href="https://t.me/fatykhova_va"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 group"
+  >
+    <img
+      src="/icons/telegram-small.svg"
+      alt="Telegram"
+      className="w-4 h-4"
+    />
+
+    {/* SLOT EFFECT */}
+    <div className="relative h-5 overflow-hidden">
+      <div className="flex flex-col transition-transform duration-500 ease-in-out group-hover:-translate-y-1/2">
+        <span className="text-xs h-5 text-light">
+          Разработка сайта: @fatykhova_va
+        </span>
+        <span className="text-xs h-4 text-light">
+          Разработка сайта: @fatykhova_va
+        </span>
+      </div>
+    </div>
+  </a>
+</div>
 </div>
 </div>
     </footer>

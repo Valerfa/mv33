@@ -129,35 +129,34 @@ https://mv33.ru/privacy
 export default function PrivacyPage() {
   return (
     <main className="w-full bg-white text-black">
-      <div className="mx-auto w-full max-w-[980px] px-4 md:px-[50px] pt-24 md:pt-36 pb-16 md:pb-20">
-        <h1 className="font-[var(--font-unbounded)] text-center text-xl md:text-4xl leading-tight">
-          Политика в отношении обработки
-        </h1>
-        <h1 className="font-[var(--font-unbounded)] text-center text-xl md:text-4xl leading-tight mb-6">
-          персональных данных
-        </h1>
+      <div className="mx-auto w-full max-w-[980px] px-4 md:px-[50px] pt-24 md:pt-36 pb-32 md:pb-40">
+        
+
+        <h1 className="heading text-center mb-12">
+  Политика в отношении обработки персональных данных
+</h1>
 
         <pre className="whitespace-pre-wrap break-words font-sans text-sm md:text-base leading-relaxed opacity-95 m-0">
           {POLICY_TEXT}
         </pre>
 
-        <Link
-          href="/"
-          className="
-            mt-10
-            inline-flex items-center justify-center
-            w-full md:w-auto
-            h-[54px]
-            px-6 md:px-12
-            text-sm lg:text-lg font-medium
-            rounded-xl
-            bg-accent text-black
-            hover:bg-black hover:text-white
-            transition
-          "
-        >
-          Вернуться на главную
-        </Link>
+        {/* ФИКСИРОВАННАЯ КНОПКА */}
+<div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+  <Link
+    href="/"
+    className="
+      flex items-center justify-center
+      px-12
+      h-16
+      rounded-xl
+      bg-black text-white
+      hover:opacity-90
+      transition
+    "
+  >
+    Вернуться назад
+  </Link>
+</div>
       </div>
     </main>
   );

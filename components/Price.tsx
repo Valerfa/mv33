@@ -3,11 +3,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import ContactPopup from "./ContactPopup";
+import OrderPopup from "./OrderPopup";
 
 
 export default function Price() {
-    const [contactOpen, setContactOpen] = useState(false);
+    const [OrderOpen, setOrderOpen] = useState(false);
 
   return (
     <section className="px-4 md:px-8 lg:px-12 py-8 w-full flex flex-col md:flex-row gap-4">
@@ -17,12 +17,12 @@ export default function Price() {
   <div className="h-full">
     
     {/* Подпись */}
-    <div className="text-black flex items-center mb-2 md:mb-4">
-      <p className="text-2xl">•</p>
-      <p className="text-black text-sm font-medium">
-        Тарифы
+   <div className="inline-flex items-center bg-black/5 text-black/30 rounded-md px-2 mb-2 md:mb-4">
+        
+      <p className="text-sm font-medium">
+      Тарифы
       </p>
-    </div>
+      </div>
 
     {/* Заголовок */}
     <h2 className="text-black heading">
@@ -32,7 +32,7 @@ export default function Price() {
 </div>
 <div className="w-full">
     {/* Список тарифов */}
-    <div className="flex flex-col gap-4 text-black">
+    <div className="flex flex-col gap-4 text-black md:mt-10 p-4 rounded-xl bg-smoke">
 
       {/* По Владимиру */}
       <div className="bg-white p-4 border border-black rounded-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -58,7 +58,7 @@ export default function Price() {
     transition-all duration-300 ease-out
     h-16 md:h-12
     px-4 md:px-6"
-            onClick={() => setContactOpen(true)}
+            onClick={() => setOrderOpen(true)}
           >
             Заказать
           </button>
@@ -84,7 +84,7 @@ export default function Price() {
     transition-all duration-300 ease-out
     h-16 md:h-12
     px-4 md:px-6"
-            onClick={() => setContactOpen(true)}
+            onClick={() => setOrderOpen(true)}
           >
             Заказать
           </button>
@@ -111,7 +111,7 @@ export default function Price() {
     transition-all duration-300 ease-out
     h-16 md:h-12
     px-4 md:px-6"
-            onClick={() => setContactOpen(true)}
+            onClick={() => setOrderOpen(true)}
           >
             Заказать
           </button>
@@ -137,9 +137,9 @@ export default function Price() {
   </div>
 
 
-<ContactPopup
-  open={contactOpen}
-  onClose={() => setContactOpen(false)}
+<OrderPopup
+  open={OrderOpen}
+  onClose={() => setOrderOpen(false)}
 />
 
     </section>

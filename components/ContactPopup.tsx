@@ -22,30 +22,26 @@ function normalizePhone(raw: string) {
   return digits;
 }
 
-function formatPhone(raw: string) {
-  const d = raw.replace(/\D/g, "");
-  // строим маску +7 (999) 999-99-99
-  let digits = d;
+function formatPhone(digits: string) {
+  if (!digits) return "";
 
-  // если пользователь начал с 8 — визуально всё равно показываем +7
-  if (digits.startsWith("8")) digits = "7" + digits.slice(1);
+  const d = digits.slice(0, 11);
 
-  // если начал с 7 и ввёл больше — оставим как есть
-  const dd = digits.slice(0, 11);
+  if (d === "7") return "+7";
 
-  const p1 = dd.slice(1, 4);
-  const p2 = dd.slice(4, 7);
-  const p3 = dd.slice(7, 9);
-  const p4 = dd.slice(9, 11);
+  const p1 = d.slice(1, 4);
+  const p2 = d.slice(4, 7);
+  const p3 = d.slice(7, 9);
+  const p4 = d.slice(9, 11);
 
-  let out = "+7";
-  if (p1) out += ` (${p1}`;
-  if (p1.length === 3) out += `)`;
-  if (p2) out += ` ${p2}`;
-  if (p3) out += `-${p3}`;
-  if (p4) out += `-${p4}`;
+  let result = "+7";
 
-  return out;
+  if (p1) result += ` (${p1})`;
+  if (p2) result += ` ${p2}`;
+  if (p3) result += `-${p3}`;
+  if (p4) result += `-${p4}`;
+
+  return result;
 }
 
 export default function ContactPopup({ open, onClose, initialPhone }: Props) {
@@ -54,12 +50,14 @@ const [phoneInput, setPhoneInput] = useState("");
 const [consent, setConsent] = useState(false);
 const [comment, setComment] = useState("");
 const [submitted, setSubmitted] = useState(false);
+const [consentOferta, setConsentOferta] = useState(false);
+const [consentPrivacy, setConsentPrivacy] = useState(false);
 
   // закрытие по Esc + блок скролла
   useEffect(() => {
   if (open && initialPhone) {
-    setPhoneInput(formatPhone(initialPhone));
-  }
+  setPhoneInput(normalizePhone(initialPhone));
+}
 
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
@@ -84,13 +82,46 @@ const [submitted, setSubmitted] = useState(false);
   // 1) есть валидный телефон ИЛИ выбран мессенджер
   // 2) поставлено согласие
   const canSubmit = useMemo(() => {
-  return phoneIsValid && consent;
-}, [phoneIsValid, consent]);
+  return (
+    phoneIsValid &&
+    consentOferta &&
+    consentPrivacy
+  );
+}, [phoneIsValid, consentOferta, consentPrivacy]);
 
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const raw = e.target.value;
-    setPhoneInput(formatPhone(raw));
+  const raw = e.target.value;
+
+  // если пользователь всё удалил
+  if (!raw) {
+    setPhoneInput("");
+    return;
   }
+
+  let digits = raw.replace(/\D/g, "");
+
+  // если начали с +
+  if (raw.startsWith("+")) {
+    digits = raw.slice(1).replace(/\D/g, "");
+  }
+
+  // если начали с 9 → делаем 79
+  if (digits.startsWith("9")) {
+    digits = "79" + digits.slice(1);
+  }
+
+  // если начали с 8 → меняем на 7
+  if (digits.startsWith("8")) {
+    digits = "7" + digits.slice(1);
+  }
+
+  // если есть цифры и первая не 7 → добавляем 7
+  if (digits.length > 0 && !digits.startsWith("7")) {
+    digits = "7" + digits;
+  }
+
+  setPhoneInput(digits.slice(0, 11));
+}
 
   async function handleSubmit() {
   if (!canSubmit) return;
@@ -105,12 +136,30 @@ const [submitted, setSubmitted] = useState(false);
       name,
       phone: phoneInput,
       comment,
+      consentOferta,
+consentPrivacy,
     }),
   });
 
   setSubmitted(true);
 }
 
+function handlePhoneKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+  if (e.key !== "Backspace") return;
+
+  const input = e.currentTarget;
+  const cursor = input.selectionStart ?? 0;
+  const value = formatPhone(phoneInput);
+
+  // Если курсор стоит сразу после ')'
+  if (value[cursor - 1] === ")") {
+    e.preventDefault();
+
+    // удаляем одну цифру из кода (позиции 1-3 после 7)
+    const digits = phoneInput.slice(0, -1);
+    setPhoneInput(digits);
+  }
+} 
   if (!open) return null;
 
   return (
@@ -136,7 +185,7 @@ const [submitted, setSubmitted] = useState(false);
         {!submitted ? (
   <>
     <h2 className="heading text-center text-black">
-      Укажите номер, <br /> по которому с вами <br /> можно связаться
+      Укажите контактный номер телефона
     </h2>
 
     <div className="mt-4 lg:mt-6 space-y-3 text-black">
@@ -145,19 +194,20 @@ const [submitted, setSubmitted] = useState(false);
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Ваше имя"
-        className="w-full h-12 lg:h-16 rounded-xl border border-black/20 px-6 text-lg lg:text-xl outline-none focus:border-black"
+        className="w-full h-16 rounded-xl border border-black/20 px-6 text-lg lg:text-xl outline-none focus:border-black"
       />
 
       {/* phone */}
-      <div className="bg-white w-full h-12 lg:h-16 rounded-xl border border-black/20 px-6 flex items-center gap-3 focus-within:border-black">
+      <div className="bg-white w-full h-16 rounded-xl border border-black/20 px-6 flex items-center gap-3 focus-within:border-black">
         <span className="text-lg lg:text-xl">🇷🇺</span>
         <input
-          inputMode="tel"
-          value={phoneInput}
-          onChange={handlePhoneChange}
-          placeholder="+7 (000) 000-00-00"
-          className="w-full h-full text-lg lg:text-xl outline-none bg-white"
-        />
+  inputMode="tel"
+  value={formatPhone(phoneInput)}
+  onChange={handlePhoneChange}
+  onKeyDown={handlePhoneKeyDown}
+  placeholder="+7 (000) 000-00-00"
+  className="w-full h-full text-lg lg:text-xl outline-none bg-white"
+/>
       </div>
 
       {/* comment */}
@@ -168,26 +218,44 @@ const [submitted, setSubmitted] = useState(false);
         rows={3}
         className="w-full rounded-xl border border-black/20 px-6 py-4 text-base lg:text-lg outline-none resize-none focus:border-black"
       />
-
-      {/* consent */}
-      <label className="mt-4 flex items-start gap-4 text-xs">
-        <input
-          type="checkbox"
-          checked={consent}
-          onChange={(e) => setConsent(e.target.checked)}
-          className="mt-1 h-6 w-6 accent-black"
-        />
-        <span className="leading-snug">
-          Я даю согласие на обработку персональных данных в соответствии с 
-          <Link
-            href="/privacy"
-            className="text-accent underline underline-offset-2 hover:text-accent/70"
-            onClick={onClose}
-          >
-            Политикой конфиденциальности
-          </Link>
-        </span>
-      </label>
+ {/* Чекбокс оферты */}
+              <label className="mt-4 flex items-center shrink-0 gap-4 text-xs">
+                <input
+                  type="checkbox"
+                  checked={consentOferta}
+                  onChange={(e) => setConsentOferta(e.target.checked)}
+                  className="flex-none h-6 w-6 accent-black"
+                />
+                <span className="leading-snug">
+                  Я принимаю условия{" "}
+                  <Link
+                    href="/oferta"
+                    className="text-orange underline underline-offset-2 hover:text-orange/70"
+                    onClick={onClose}
+                  >
+                    Договора публичной оферты
+                  </Link>
+                </span>
+              </label>
+      {/* Чекбокс политики */}
+              <label className="flex items-center shrink-0 gap-4 text-xs">
+                <input
+                  type="checkbox"
+                  checked={consentPrivacy}
+                  onChange={(e) => setConsentPrivacy(e.target.checked)}
+                  className="flex-none h-6 w-6 accent-black"
+                />
+                <span className="leading-snug">
+                  Я даю согласие на обработку персональных данных в соответствии с{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-orange underline underline-offset-2 hover:text-orange/70"
+                    onClick={onClose}
+                  >
+                    Политикой конфиденциальности
+                  </Link>
+                </span>
+              </label>
 
       {/* submit */}
       <button
@@ -195,13 +263,13 @@ const [submitted, setSubmitted] = useState(false);
         onClick={handleSubmit}
         disabled={!canSubmit}
         className={[
-          "mt-6 w-full h-12 lg:h-16 rounded-2xl font-medium text-lg transition",
+          "mt-6 w-full h-16 rounded-xl font-medium text-lg transition",
           canSubmit
             ? "bg-black text-light hover:opacity-90"
             : "bg-black/20 text-black/40 cursor-not-allowed",
         ].join(" ")}
       >
-        Отправить данные
+        Заказать звонок
       </button>
     </div>
   </>
@@ -217,8 +285,8 @@ const [submitted, setSubmitted] = useState(false);
 />
 <p className="heading leading-snug mt-8">
     Заявка принята</p>
-  <p className="text-lg lg:text-xl font-normal leading-snug mt-2">
-    В ближайшее время мы свяжемся с вами для согласования маршрута</p>
+  <p className="text-lg lg:text-xl font-normal leading-snug mt-4">
+    Мы перезвоним Вам в ближайшее время.</p>
    
 </div>
 )}

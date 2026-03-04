@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ContactPopup from "./ContactPopup";
+import Header from "./Header";
 
 function formatPhone(raw: string) {
   const d = raw.replace(/\D/g, "");
@@ -36,43 +37,24 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative min-h-[100svh] bg-[#131313] w-full rounded-b-xl overflow-hidden">
+      <section className="relative h-screen bg-[#131313] w-full rounded-b-2xl overflow-hidden">
         {/* Фолбэк на изображение если видео не загрузится */}
         <Image
-          src="/images/hero-minimal.png"
+          src="/images/hero-5.webp"
           alt=""
           fill
           priority
           quality={90}
-          className="object-cover object-center"
+          className="object-cover object-center grayscale"
         />
 
-        {/* Оверлей для читаемости */}
         <div className="absolute inset-0 bg-black/60" />
 
-        {/* Хедер ВНУТРИ Hero */}
-        <header className="relative z-20 w-full">
-          <nav className="flex items-center justify-between h-16 p-4 md:p-8 lg:p-12">
-            {/* ЛОГО */}
-            <a href="/" className="flex items-center">
-              <Image
-                src="/icons/logo.svg"
-                alt="Логотип"
-                width={48}
-                height={48}
-                priority
-              />
-            </a>
-
-            
-          </nav>
-        </header>
-
+<Header />
         {/* Основной контент - используем flex для точного контроля */}
-        <div className="relative z-10 w-full min-h-[calc(100svh-4rem)] flex flex-col justify-between">
-          
+        <div className="relative z-10 w-full h-full flex flex-col"> 
           {/* Верхняя часть - заголовки */}
-          <div className="flex-1 flex flex-col justify-end mx-4 md:mx-4 lg:mx-12 pb-24 md:pb-36">
+          <div className="flex-1 flex flex-col justify-end mx-4 md:mx-8 lg:mx-12">
             <h1 className="title-hero text-white">
               Безопасные поездки
               <br />
@@ -89,14 +71,14 @@ export default function Hero() {
           </div>
 
           {/* Нижняя часть - контент */}
-          <div className="border-t-2 border-white/10 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 min-h-[30vh]">
+          <div className="border-t-2 border-white/10 w-full mt-24">
+            <div className="grid grid-cols-1 md:grid-cols-2">
               
               {/* Левая колонка */}
               <div className="h-full md:border-r-2 border-white/10">
                 <div className="h-full mx-4 md:mx-4 lg:mx-12 flex flex-col justify-between">
-                  <p className="caption text-white/30 my-4 md:my-6">О сервисе</p>
-                  <p className="text-lg xl:text-2xl mb-4 md:mb-6 text-white font-light leading-relaxed">
+                  <p className="caption text-white/30 py-4 md:py-6">О сервисе</p>
+                  <p className="hero-subscription mb-4 md:mb-6 text-white font-light leading-relaxed">
                     Мы помогаем быть вовремя в нужном месте. Независимо от
                     обстоятельств. Мы сделаем вашу поездку комфортной и
                     безопасной.
@@ -104,10 +86,10 @@ export default function Hero() {
                 </div>
               </div>
               {/* Кнопка "Позвонить" для мобильных */}
-                  <div className="md:hidden mb-6">
+                  <div className="md:hidden mx-4 mb-4">
                     <a
                       href="tel:+79203669096"
-                      className="block w-full px-8 py-4 rounded-xl bg-accent body-text text-light hover:opacity-90 transition h-16 flex items-center justify-center"
+                      className="block w-full px-8 py-4 rounded-xl bg-accent hero-subscription text-light hover:opacity-90 transition h-16 flex items-center justify-center"
                     >
                       Позвонить
                     </a>
@@ -120,7 +102,7 @@ export default function Hero() {
                   
                   {/* Форма для десктопа */}
                   <div className="h-full hidden md:flex flex-col justify-between">
-                    <div><p className="caption text-white/30 mt-4 md:mt-6">Заказ услуги</p></div>
+                    <div><p className="caption text-white/30 pt-4 md:pt-6">Заказ услуги</p></div>
                     <div className="mb-4 md:mb-6 w-full 2xl:w-3/4 h-16 bg-white rounded-xl py-1 pl-4 md:pl-6 pr-1 flex justify-between">
                       <input
                         inputMode="tel"

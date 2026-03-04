@@ -42,11 +42,9 @@ export default function Advantage() {
       {/* Левая текстовая колонка */}
       <div className="lg:w-[500px] flex flex-col justify-between">
         <div className="h-full mb-4">
-  <div className="text-black flex items-center mb-2 md:mb-4">
-        <p className="text-2xl">
-        •
-      </p>
-      <p className="text-black text-sm font-medium">
+  <div className="inline-flex items-center bg-black/5 text-black/30 rounded-md px-2 mb-2 md:mb-4">
+        
+      <p className="text-sm font-medium">
       О нас
       </p>
       </div>
@@ -90,7 +88,7 @@ export default function Advantage() {
       />
 
       {/* Затемнение */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/40" />
 
 
       {/* Контент */}

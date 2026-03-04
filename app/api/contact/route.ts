@@ -3,15 +3,33 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, comment } = body;
+    const { type, name, phone, comment, departure, arrival } = body;
 
-    const text = `
-🚗 Новая заявка на услугу "Трезвый водитель"
+    let text = "";
 
-Имя: ${name || "не указано"}
-Телефон: ${phone}
-Комментарий: ${comment || "нет"}
+    if (type === "driver_order") {
+      text = `
+Новая заявка на услугу "Трезвый водитель"
+
+👤 Имя: ${name || "не указано"}
+📞 Телефон: ${phone || "не указано"}
+
+📍 Откуда: ${departure || "не указано"}
+🏁 Куда: ${arrival || "не указано"}
+
+💬 Комментарий: ${comment || "нет"}
 `;
+    } else {
+      // Заявка на обратный звонок
+      text = `
+Новая заявка на обратный звонок
+
+👤 Имя: ${name || "не указано"}
+📞 Телефон: ${phone || "не указано"}
+
+💬 Комментарий: ${comment || "нет"}
+`;
+    }
 
     const response = await fetch(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
