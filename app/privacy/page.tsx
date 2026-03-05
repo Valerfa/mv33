@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BackButton from "../../components/BackButton";
 
 export const metadata = {
   title: "Политика конфиденциальности",
@@ -142,20 +143,7 @@ export default function PrivacyPage() {
 
         {/* ФИКСИРОВАННАЯ КНОПКА */}
 <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-  <Link
-    href="/"
-    className="
-      flex items-center justify-center
-      px-12
-      h-16
-      rounded-xl
-      bg-black text-white
-      hover:opacity-90
-      transition
-    "
-  >
-    Вернуться назад
-  </Link>
+  <BackButton />
 </div>
       </div>
     </main>
