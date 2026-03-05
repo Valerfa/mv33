@@ -39,7 +39,7 @@ section {
 /* ================= HERO TITLE ================= */
 
 .title-hero {
-  font-size: clamp(4rem, 10vw, 16rem);
+  font-size: clamp(4rem, 9vw, 14rem);
   font-weight: 500;
   line-height: 0.8;
   letter-spacing: -0.06em;
