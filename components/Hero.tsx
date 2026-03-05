@@ -48,9 +48,9 @@ export default function Hero() {
           className="object-cover object-center grayscale"
         />
 
-        <div className="absolute inset-0 bg-black/60" />
+     
 
-<Header />
+ <div className="absolute inset-0 bg-black/60 pointer-events-none" />
         {/* Основной контент - используем flex для точного контроля */}
         <div className="relative z-10 w-full h-full flex flex-col"> 
           {/* Верхняя часть - заголовки */}

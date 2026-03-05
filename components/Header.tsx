@@ -5,7 +5,11 @@ import Image from "next/image";
 import Logo from "@/public/icons/logo.svg";
 import OrderPopup from "./OrderPopup";
 
-export default function Header() {
+interface HeaderProps {
+  onOpenOrder?: () => void;
+}
+
+export default function Header({ onOpenOrder }: HeaderProps) {
   const [orderOpen, setOrderOpen] = useState(false);
 
   return (
@@ -47,7 +51,7 @@ export default function Header() {
           {/* 💻 DESKTOP — кнопка справа */}
           <div className="hidden md:block ml-auto">
             <button
-              onClick={() => setOrderOpen(true)}
+              onClick={() => onOpenOrder?.()}
               className="
                 flex
                 items-center justify-center
