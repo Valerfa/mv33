@@ -26,7 +26,7 @@ export default function Price() {
 
     {/* Заголовок */}
     <h2 className="text-black heading">
-      Понятная система<br /> расчета тарифов
+      Прозрачная система<br /> расчета тарифов
     </h2>
 </div>
 </div>
@@ -46,7 +46,7 @@ export default function Price() {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center gap-2">
-          <p className="text-lg font-semibold whitespace-nowrap">
+          <p className="rounded-full bg-accent/10 px-3 py-1 text-accent text-lg font-semibold whitespace-nowrap">
             2 500 ₽
           </p>
           <button
