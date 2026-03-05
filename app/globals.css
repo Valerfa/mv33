@@ -41,7 +41,7 @@ section {
 .title-hero {
   font-size: clamp(4rem, 9vw, 14rem);
   font-weight: 500;
-  line-height: 0.8;
+  line-height: 0.85;
   letter-spacing: -0.06em;
 }
 
@@ -85,7 +85,7 @@ section {
 .heading {
   font-size: 2.25rem;
   font-weight: 500;
-  line-height: 0.8;
+  line-height: 0.9;
   letter-spacing: -0.02em;
 }
 

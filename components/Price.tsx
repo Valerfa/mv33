@@ -13,7 +13,7 @@ export default function Price({ onOpenOrder }: PriceProps) {
     const [OrderOpen, setOrderOpen] = useState(false);
 
   return (
-    <section className="px-4 md:px-8 lg:px-12 py-8 w-full flex flex-col md:flex-row gap-4">
+    <section className="px-4 md:px-8 lg:px-12 py-8 w-full flex flex-col lg:flex-row gap-4">
       {/* Левая текстовая колонка */}
 <div className="lg:w-[500px] flex flex-col justify-between lg:w-[500px] shrink-0 flex flex-col">
   
@@ -29,16 +29,16 @@ export default function Price({ onOpenOrder }: PriceProps) {
 
     {/* Заголовок */}
     <h2 className="text-black heading">
-      Прозрачная система<br /> расчета тарифов
+      Прозрачная система<br /> расчета стоимости
     </h2>
 </div>
 </div>
 <div className="w-full">
     {/* Список тарифов */}
-    <div className="flex flex-col gap-4 text-black md:mt-10 p-4 rounded-xl bg-smoke">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 text-black md:mt-10 p-4 rounded-xl bg-smoke">
 
       {/* По Владимиру */}
-      <div className="bg-white p-4 border border-black rounded-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="bg-white p-4 border border-black rounded-xl flex flex-col lg:flex-row lg:items-center sm:justify-between gap-4">
         <div>
           <p className="font-medium text-lg">
             По Владимиру
@@ -48,8 +48,8 @@ export default function Price({ onOpenOrder }: PriceProps) {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-center gap-2">
-          <p className="rounded-full bg-accent/10 px-3 py-1 text-accent text-lg font-semibold whitespace-nowrap">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+          <p className="self-start rounded-full bg-accent/10 px-3 py-1 text-accent text-lg font-semibold whitespace-nowrap">
             2 500 ₽
           </p>
           <button
@@ -69,7 +69,7 @@ export default function Price({ onOpenOrder }: PriceProps) {
       </div>
 
       {/* За пределами Владимира */}
-      <div className="w-full bg-white p-4 border border-black rounded-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="w-full bg-white p-4 border border-black rounded-xl flex flex-col lg:flex-row lg:items-center sm:justify-between gap-4">
         <div>
           <p className="font-medium text-lg">
             За пределами Владимира
@@ -94,7 +94,7 @@ export default function Price({ onOpenOrder }: PriceProps) {
       </div>
 
       {/* Московская область */}
-      <div className="bg-white p-4 border border-black rounded-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="bg-white p-4 border border-black rounded-xl flex flex-col lg:flex-row lg:items-center sm:justify-between gap-4">
         <div>
           <p className="font-medium text-lg">
             Московская область

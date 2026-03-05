@@ -135,7 +135,7 @@ export default function PrivacyPage() {
         
 
         <h1 className="heading text-center mb-12">
-  Политика в отношении обработки персональных данных
+  Политика в отношении <br/> обработки персональных данных
 </h1>
 
         <pre className="whitespace-pre-wrap break-words font-sans text-sm md:text-base leading-relaxed opacity-95 m-0">
