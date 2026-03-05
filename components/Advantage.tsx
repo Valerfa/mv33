@@ -59,7 +59,7 @@ export default function Advantage() {
 
       {/* Панели */}
       {/* Карточки */}
-<div className="flex-1 flex flex-col md:flex-row gap-4">
+<div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:flex-row gap-4">
   {CARDS.map((panel) => (
     <div
     key={panel.id} 
