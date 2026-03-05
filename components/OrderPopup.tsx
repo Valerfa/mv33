@@ -188,7 +188,7 @@ const [phoneInput, setPhoneInput] = useState("");
                 className="w-full h-16 rounded-xl border border-black/20 px-6 text-lg lg:text-xl outline-none focus:border-black"
               />
 
-              <div className="bg-white w-full h-16 rounded-xl border border-black/20 px-6 flex items-center gap-3 focus-within:border-black">
+              <div className="w-full h-16 rounded-xl border border-black/20 px-6 flex items-center gap-3 focus-within:border-black">
                 <span className="text-lg lg:text-xl">🇷🇺</span>
                 <input
   inputMode="tel"
@@ -196,7 +196,7 @@ const [phoneInput, setPhoneInput] = useState("");
   onChange={handlePhoneChange}
   onKeyDown={handlePhoneKeyDown}
   placeholder="+7 (000) 000-00-00"
-  className="w-full h-full text-lg lg:text-xl outline-none bg-white"
+  className="w-full h-full text-lg lg:text-xl outline-none"
 />
               </div>
 
@@ -235,7 +235,7 @@ const [phoneInput, setPhoneInput] = useState("");
                 <span className="leading-snug">
                   Я принимаю условия{" "}
                   <Link
-                    href="/oferta"
+                    href="/oferta?popup=order"
                     className="text-orange underline underline-offset-2 hover:text-orange/70"
                     onClick={onClose}
                   >
@@ -255,7 +255,7 @@ const [phoneInput, setPhoneInput] = useState("");
                 <span className="leading-snug">
                   Я даю согласие на обработку персональных данных в соответствии с{" "}
                   <Link
-                    href="/privacy"
+                    href="/privacy?popup=order"
                     className="text-orange underline underline-offset-2 hover:text-orange/70"
                     onClick={onClose}
                   >
