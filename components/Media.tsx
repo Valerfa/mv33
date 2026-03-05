@@ -50,7 +50,7 @@ export default function Media() {
 
 
       {/* Видео */}
-      <div className="relative w-full h-[500px] lg:h-[600px] mb-2">
+      <div className="relative w-full h-[300px] md:h-[300px] lg:h-[400px] xl:h-[500px] mb-2">
         <video
           autoPlay
           muted
