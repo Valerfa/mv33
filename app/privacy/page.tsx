@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BackButton from "../../components/BackButton";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Политика конфиденциальности",
@@ -142,9 +143,11 @@ export default function PrivacyPage() {
         </pre>
 
         {/* ФИКСИРОВАННАЯ КНОПКА */}
-<div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-  <BackButton />
-</div>
+<Suspense fallback={null}>
+  <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <BackButton />
+  </div>
+</Suspense>
       </div>
     </main>
   );

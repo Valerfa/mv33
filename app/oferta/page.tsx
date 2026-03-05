@@ -1,5 +1,6 @@
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Договор оферты",
@@ -127,9 +128,11 @@ export default function OfertaPage() {
       </div>
 
       {/* ФИКСИРОВАННАЯ КНОПКА */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <BackButton />
-      </div>
+      <Suspense fallback={null}>
+  <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <BackButton />
+  </div>
+</Suspense>
 
     </main>
   );
