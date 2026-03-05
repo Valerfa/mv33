@@ -18,18 +18,7 @@ export default function HomePage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
 
-  useEffect(() => {
-  if (popupType === "order") {
-    setOrderOpen(true);
-  }
-
-  if (popupType === "contact") {
-    setContactOpen(true);
-  }
-}, [popupType]);
-
   return (
-    
     <>
     <Suspense fallback={null}>
   <PopupController
