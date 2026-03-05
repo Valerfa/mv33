@@ -198,7 +198,7 @@ function handlePhoneKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
       />
 
       {/* phone */}
-      <div className="bg-white w-full h-16 rounded-xl border border-black/20 px-6 flex items-center gap-3 focus-within:border-black">
+      <div className="w-full h-16 rounded-xl border border-black/20 px-6 flex items-center gap-3 focus-within:border-black">
         <span className="text-lg lg:text-xl">🇷🇺</span>
         <input
   inputMode="tel"
@@ -206,7 +206,7 @@ function handlePhoneKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
   onChange={handlePhoneChange}
   onKeyDown={handlePhoneKeyDown}
   placeholder="+7 (000) 000-00-00"
-  className="w-full h-full text-lg lg:text-xl outline-none bg-white"
+  className="w-full h-full text-lg lg:text-xl outline-none"
 />
       </div>
 
@@ -229,7 +229,7 @@ function handlePhoneKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
                 <span className="leading-snug">
                   Я принимаю условия{" "}
                   <Link
-                    href="/oferta"
+                    href="/oferta?popup=contact"
                     className="text-orange underline underline-offset-2 hover:text-orange/70"
                     onClick={onClose}
                   >
@@ -248,7 +248,7 @@ function handlePhoneKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
                 <span className="leading-snug">
                   Я даю согласие на обработку персональных данных в соответствии с{" "}
                   <Link
-                    href="/privacy"
+                    href="/privacy?popup=contact"
                     className="text-orange underline underline-offset-2 hover:text-orange/70"
                     onClick={onClose}
                   >
