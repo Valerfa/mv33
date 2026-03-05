@@ -5,8 +5,11 @@ import Image from "next/image";
 import { useState } from "react";
 import OrderPopup from "./OrderPopup";
 
+interface PriceProps {
+  onOpenOrder?: () => void;
+}
 
-export default function Price() {
+export default function Price({ onOpenOrder }: PriceProps) {
     const [OrderOpen, setOrderOpen] = useState(false);
 
   return (
@@ -58,7 +61,7 @@ export default function Price() {
     transition-all duration-300 ease-out
     h-16 md:h-12
     px-4 md:px-6"
-            onClick={() => setOrderOpen(true)}
+            onClick={() => onOpenOrder?.()}
           >
             Заказать
           </button>
@@ -84,7 +87,7 @@ export default function Price() {
     transition-all duration-300 ease-out
     h-16 md:h-12
     px-4 md:px-6"
-            onClick={() => setOrderOpen(true)}
+            onClick={() => onOpenOrder?.()}
           >
             Заказать
           </button>
@@ -111,7 +114,7 @@ export default function Price() {
     transition-all duration-300 ease-out
     h-16 md:h-12
     px-4 md:px-6"
-            onClick={() => setOrderOpen(true)}
+            onClick={() => onOpenOrder?.()}
           >
             Заказать
           </button>
