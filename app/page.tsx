@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-
+import { Suspense } from "react";
+import PopupController from "@/components/PopupController";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Media from "../components/Media";
@@ -14,8 +14,6 @@ import OrderPopup from "@/components/OrderPopup";
 import ContactPopup from "@/components/ContactPopup";
 
 export default function HomePage() {
-  const searchParams = useSearchParams();
-  const popupType = searchParams.get("popup");
 
   const [contactOpen, setContactOpen] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
@@ -31,7 +29,14 @@ export default function HomePage() {
 }, [popupType]);
 
   return (
+    
     <>
+    <Suspense fallback={null}>
+  <PopupController
+    openOrder={() => setOrderOpen(true)}
+    openContact={() => setContactOpen(true)}
+  />
+</Suspense>
       <Header onOpenOrder={() => setOrderOpen(true)} />
       <Hero onOpenContact={() => setContactOpen(true)} />
       <Media />
