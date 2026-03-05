@@ -6,13 +6,19 @@ export default function BackButton() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const popupType = searchParams.get("popup") || "order";
-  // если параметр есть — берём его
-  // если нет — по умолчанию order
+  const popupType = searchParams.get("popup");
+
+  function handleBack() {
+    if (popupType) {
+      router.push(`/?popup=${popupType}`);
+    } else {
+      router.push("/");
+    }
+  }
 
   return (
     <button
-      onClick={() => router.push(`/?popup=${popupType}`)}
+      onClick={handleBack}
       className="
         flex items-center justify-center
         px-12
