@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import ContactPopup from "./ContactPopup";
 import Header from "./Header";
+
+interface HeroProps {
+  onOpenContact?: () => void;
+}
 
 function formatPhone(raw: string) {
   const d = raw.replace(/\D/g, "");
@@ -27,8 +30,7 @@ function formatPhone(raw: string) {
   return out;
 }
 
-export default function Hero() {
-  const [contactOpen, setContactOpen] = useState(false);
+export default function Hero({ onOpenContact }: HeroProps) {
   const [phone, setPhone] = useState("");
 
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -112,11 +114,11 @@ export default function Hero() {
                         className="min-w-0 flex-1 h-full text-lg xl:text-2xl text-black bg-transparent outline-none font-normal"
                       />
                       <button
-                        onClick={() => setContactOpen(true)}
-                        className="h-full px-4 md:px-6 rounded-xl bg-black text-white text-xs md:text-sm lg:text-md xl:text-xl flex items-center justify-center hover:bg-accent hover:text-black transition leading-none md:whitespace-nowrap"
-                      >
-                        Заказать звонок
-                      </button>
+  onClick={() => onOpenContact?.()}
+  className="h-full px-4 md:px-6 rounded-xl bg-black text-white text-xs md:text-sm lg:text-md xl:text-xl flex items-center justify-center hover:bg-accent hover:text-black transition leading-none md:whitespace-nowrap"
+>
+  Заказать звонок
+</button>
                     </div>
             
                 </div>
@@ -126,11 +128,7 @@ export default function Hero() {
         </div>
       </section>
 
-      <ContactPopup
-        open={contactOpen}
-        onClose={() => setContactOpen(false)}
-        initialPhone={phone}
-      />
+
     </>
   );
 }
