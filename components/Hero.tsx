@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Header from "./Header";
 
 interface HeroProps {
@@ -32,10 +33,20 @@ function formatPhone(raw: string) {
 
 export default function Hero({ onOpenContact }: HeroProps) {
   const [phone, setPhone] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
     setPhone(formatPhone(e.target.value));
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -88,15 +99,21 @@ export default function Hero({ onOpenContact }: HeroProps) {
                   </p>
                 </div>
               </div>
-              {/* Кнопка "Позвонить" для мобильных */}
-                  <div className="md:hidden mx-4 mb-4">
-                    <a
-                      href="tel:+79203669096"
-                      className="block w-full px-8 py-4 rounded-xl bg-accent hero-subscription text-light hover:opacity-90 transition h-16 flex items-center justify-center"
-                    >
-                      Позвонить
-                    </a>
-                  </div>
+              {/* Кнопки для мобильных */}
+              <div className="md:hidden mx-4 mb-4 space-y-3">
+                <a
+                  href="tel:+79203669096"
+                  className="block w-full px-8 py-4 rounded-xl bg-accent hero-subscription text-light hover:opacity-90 transition h-16 flex items-center justify-center"
+                >
+                  Позвонить
+                </a>
+                <button
+                  onClick={() => onOpenContact?.()}
+                  className="block w-full rounded-xl bg-black text-white hero-subscription h-16 flex items-center justify-center px-8"
+                >
+                  Вызвать водителя
+                </button>
+              </div>
               {/* Правая колонка */}
          
                 <div className="h-full mx-4 md:mx-8 lg:mr-12 xl:mr-16 2xl:mr-24 p">
@@ -129,7 +146,25 @@ export default function Hero({ onOpenContact }: HeroProps) {
         </div>
       </section>
 
-
+      {/* Плавающая кнопка для мобильных - вынесена за пределы section чтобы избежать overflow-hidden */}
+      <motion.button
+        layout
+        onClick={() => onOpenContact?.()}
+        className="md:hidden fixed bottom-4 right-4 rounded-xl bg-black text-white hero-subscription h-16 flex items-center justify-center z-[9999] shadow-lg"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: isScrolled ? 1 : 0,
+          y: isScrolled ? 0 : 20,
+          pointerEvents: isScrolled ? "auto" : "none",
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+      >
+        <motion.span layout="position" className="px-4">Вызвать водителя</motion.span>
+      </motion.button>
     </>
   );
 }
