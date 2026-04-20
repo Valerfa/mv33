@@ -39,7 +39,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
 
   return (
     <>
-      <section className="relative h-screen bg-[#131313] w-full rounded-b-2xl overflow-hidden">
+      <section className="relative h-[100dvh] bg-[#131313] w-full rounded-b-2xl overflow-hidden">
         {/* Фолбэк на изображение если видео не загрузится */}
         <Image
           src="/images/hero-5.webp"
@@ -64,11 +64,12 @@ export default function Hero({ onOpenContact }: HeroProps) {
             </h1>
             
             
-            {/* Бейдж "Работаем 24 часа" - только на десктопе */}
+            {/* Бейджи "г. Владимир"   */}
             <div className="mt-4 md:mt-6 lg:mt-8">
               <span className="inline-flex items-center rounded-full px-4 py-2 text-xs md:text-sm text-accent bg-accent/20">
-                Работаем 24 часа в сутки
+                г. Владимир
               </span>
+             
             </div>
           </div>
 
