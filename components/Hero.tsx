@@ -89,7 +89,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
             <div className="grid grid-cols-1 md:grid-cols-2">
               
               {/* Левая колонка */}
-              <div className="h-full md:border-r-2 border-white/10">
+              <div className="h-full ">
                 <div className="h-full mx-4 md:mx-4 lg:mx-12 flex flex-col justify-between">
                   <p className="caption text-white/30 py-4 md:py-6">О сервисе</p>
                   <p className="hero-subscription mb-4 md:mb-6 text-white font-light leading-relaxed">
@@ -107,9 +107,11 @@ export default function Hero({ onOpenContact }: HeroProps) {
                 >
                   Позвонить
                 </a>
+
+                 {/* СКРЫТАЯ кнопка block*/}
                 <button
                   onClick={() => onOpenContact?.()}
-                  className="block w-full rounded-xl bg-black text-white hero-subscription h-16 flex items-center justify-center px-8"
+                  className="hidden w-full rounded-xl bg-black text-white hero-subscription h-16 flex items-center justify-center px-8"
                 >
                   Вызвать водителя
                 </button>
@@ -119,10 +121,12 @@ export default function Hero({ onOpenContact }: HeroProps) {
                 <div className="h-full mx-4 md:mx-8 lg:mr-12 xl:mr-16 2xl:mr-24 p">
                   
                   
-                  
+                  {/* СКРЫТАЯ часть с кнопкой hidden md:flex */}
                   {/* Форма для десктопа */}
-                  <div className="h-full hidden md:flex flex-col justify-between">
+                  <div className="md:border-l-2 border-white/10 h-full hidden flex-col justify-between">
                     <div><p className="caption text-white/30 pt-4 md:pt-6">Заказ услуги</p></div>
+
+                    
                     <div className="mb-4 md:mb-6 w-full 2xl:w-3/4 h-16 bg-white rounded-xl py-1 pl-4 md:pl-6 pr-1 flex justify-between">
                       <input
                         inputMode="tel"
@@ -146,11 +150,12 @@ export default function Hero({ onOpenContact }: HeroProps) {
         </div>
       </section>
 
+{/* СКРЫТАЯ кнопка */}
       {/* Плавающая кнопка для мобильных - вынесена за пределы section чтобы избежать overflow-hidden */}
       <motion.button
         layout
         onClick={() => onOpenContact?.()}
-        className="md:hidden fixed bottom-4 right-4 rounded-xl bg-black text-white hero-subscription h-16 flex items-center justify-center z-[9999] shadow-lg"
+        className="hidden fixed bottom-4 right-4 rounded-xl bg-black text-white hero-subscription h-16 flex items-center justify-center z-[9999] shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: isScrolled ? 1 : 0,

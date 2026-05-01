@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Logo from "@/public/icons/logo.svg";
 import OrderPopup from "./OrderPopup";
+import CallButton from "./CallButton";
 
 interface HeaderProps {
   onOpenOrder?: () => void;
@@ -48,8 +49,8 @@ export default function Header({ onOpenOrder }: HeaderProps) {
             </a>
           </div>
 
-          {/* 💻 DESKTOP — кнопка справа */}
-          <div className="hidden md:block ml-auto">
+          {/* СКРЫТАЯ кнопка */}
+          <div className="hidden ml-auto">
             <button
               onClick={() => onOpenOrder?.()}
               className="
@@ -69,6 +70,10 @@ export default function Header({ onOpenOrder }: HeaderProps) {
             >
               Вызвать водителя
             </button>
+          </div>
+
+          <div className="hidden md:block ml-auto">
+            <CallButton/>
           </div>
 
         </nav>

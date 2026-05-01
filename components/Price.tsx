@@ -4,6 +4,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import OrderPopup from "./OrderPopup";
+import CallButton from "./CallButton";
 
 interface PriceProps {
   onOpenOrder?: () => void;
@@ -52,8 +53,9 @@ export default function Price({ onOpenOrder }: PriceProps) {
           <p className="self-start rounded-full bg-accent/10 px-3 py-1 text-accent text-lg font-semibold whitespace-nowrap">
             2 500 ₽
           </p>
+          {/* СКРЫТАЯ кнопка */}
           <button
-            className="group
+            className="hidden group
     inline-center
     overflow-hidden
     rounded-xl
@@ -65,6 +67,9 @@ export default function Price({ onOpenOrder }: PriceProps) {
           >
             Заказать
           </button>
+          <div className="w-full md:w-auto md:ml-auto">
+            <CallButton variant="green" />
+          </div>
         </div>
       </div>
 
@@ -78,8 +83,9 @@ export default function Price({ onOpenOrder }: PriceProps) {
             2 500 ₽ + 35 ₽ за километр
           </p>
         </div>
+        {/* СКРЫТАЯ кнопка */}
           <button
-            className="group
+            className="hidden group
     inline-center
     overflow-hidden
     rounded-xl
@@ -91,6 +97,9 @@ export default function Price({ onOpenOrder }: PriceProps) {
           >
             Заказать
           </button>
+          <div className="w-full md:w-auto md:ml-auto">
+            <CallButton />
+          </div>
       </div>
 
       {/* Московская область */}
@@ -104,9 +113,9 @@ export default function Price({ onOpenOrder }: PriceProps) {
           </p>
         </div>
 
-       
+       {/* СКРЫТАЯ кнопка */}
           <button
-            className="group
+            className="hidden group
     inline-center
     overflow-hidden
     rounded-xl
@@ -118,7 +127,9 @@ export default function Price({ onOpenOrder }: PriceProps) {
           >
             Заказать
           </button>
-        
+          <div className="w-full md:w-auto md:ml-auto">
+            <CallButton />
+          </div>
       </div>
 
       {/* Ожидание */}
